@@ -1,0 +1,237 @@
+html{
+    box-sizing: border-box;
+    background-image: url('./img/fondo.png');
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+@font-face{
+    font-family:AvenirBold;
+    src:url(./fonts/AvenirNextLTPro-Bold.otf);
+}
+@font-face{
+    font-family:AvenirRegular;
+    src:url(./fonts/AvenirNextLTPro-Regular.otf);
+}
+
+body{
+    margin:0;
+    padding:0;
+    width:100vw;
+    height: 100vh;
+    font-family: AvenirRegular;
+    
+}
+*,*:after,*:before{
+    box-sizing: inherit;
+}
+main{
+    display:flex;
+    justify-content: center;
+    width:100%;
+    height:100%;
+    text-align: center;
+}
+.page{
+    display:flex;
+    flex-direction: column;
+    max-width: 1200px;
+    width:100%;
+}
+.page h1{
+    color:rgb(196, 160, 42);
+}
+.listCards{
+    display:flex;
+    flex-flow: row wrap;
+    width:100%;
+    gap:1rem;
+    justify-content: center;
+}
+.card{
+    color:white;
+    width:100%;
+    min-height: 350px;
+    max-width:280px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    border-radius: 1rem;
+    cursor:pointer;
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    perspective: 1000; 
+    background: #222634;
+
+}
+.card h5{
+    margin:0;
+}
+.card-front,.card-back{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+    height:100%;
+    position: absolute;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;    
+    backface-visibility: hidden;
+}
+.card-front{
+    z-index: 3;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom:1.5rem;
+    
+}
+.card:hover> .card-front{
+    z-index: 0;
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    transform: rotateY(180deg);   
+}
+.card:hover > .card-back{
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);    
+    transform: rotateY(0deg);
+}
+.card-back{
+    color: #fff;
+    text-align: center;
+    font-size: 11px;
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    transform: rotateY(180deg);    
+}
+.card img{
+    width:80%;
+}
+.card .statistics{
+    display:flex;
+    gap:1rem;
+}
+.card .stat{
+    font-size: 11px;
+    font-family: AvenirBold;
+}
+.card .statText{
+    margin-top:5px;
+    display:flex;
+    align-items: center;
+    gap:5px;
+}
+.stat img{
+    width:24px;
+}
+
+.card-back img{
+    width:40px;
+    height:40px;
+}
+.bodyPartsList{
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:100%;
+    gap:2rem;
+}
+.bodyPart{
+    display:flex;
+    align-items: center;
+    gap:5px;
+}
+
+
+/* Modal */
+.modalWrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal{
+   width:500px;
+   height:450px;
+   background: #222634;
+   position:relative;
+   border-radius: 1rem;
+   display:flex;
+    justify-content:space-between;
+   align-items: center;
+   padding: 1rem 3rem;
+
+}
+.modal-close{
+    position:absolute;
+    top:1rem;
+    right:1rem;
+    cursor:pointer;
+}
+.modal-card{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: default;
+}
+.modal-buttons{
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+}
+.modal-buttons button{
+    padding:1rem;
+    border:0;
+    border-radius: 6px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    color:white;
+
+}
+.modal-buttons button:active{
+    transform:scale(0.8)
+}
+.modal-buttons button:nth-child(1){
+    background: #3AC279;
+
+}
+.modal-buttons button:nth-child(2){
+    background: #C23A3A;
+
+}
+@media only screen and (max-width:500px){
+    .modal{
+        width:80vw;
+        flex-direction: column;
+        height:auto;
+        padding: 3rem 1rem;
+        gap:1rem;
+    }
+    .modal img{
+        width:70%;
+    }
+    img.modal-close{
+        width:24px;
+    }
+    .modal-card{
+        width:100%;
+        padding-bottom: 1rem;
+    }
+    .modal .statistics{
+        justify-content: center;
+        flex-wrap: wrap;
+        gap:0;
+    }
+    .modal .stat{
+        margin-top: 1rem;
+        margin-right: 10%;
+    }
+}
